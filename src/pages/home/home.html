@@ -1,14 +1,29 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Employees
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-item>
+    <ion-label stacked>Please enter the name</ion-label>
+    <ion-input [(ngModel)]="employee.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Please enter the experience</ion-label>
+    <ion-input [(ngModel)]="employee.exp"></ion-input>
+  </ion-item>
+  <button ion-button full (click)="addEmployee()">Add</button>
+
+  <ion-list>
+    <ion-item *ngFor="let emp of employees">
+      <ion-avatar item-start style="font-size: 2em;">
+        <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+      </ion-avatar>
+      <h4>{{ emp.name }}</h4>
+      <p>{{ emp.expr }}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
