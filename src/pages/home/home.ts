@@ -28,14 +28,18 @@ export class HomePage {
   }
 
   addEmployee(){
-    this.databasePro.addEmployee(this.employee['name'],this.employee['exp']).then(data=>{
-      this.loadEmployees();
-      this.presentToast("Data inserted successfully");
-      this.employee = {
-        name:'',
-        exp:''
-      };;
-    });
+    if(this.employee['name']=="" && this.employee['exp']== ""){
+      this.presentToast("Please enter the data");
+    }else{
+      this.databasePro.addEmployee(this.employee['name'],this.employee['exp']).then(data=>{
+        this.loadEmployees();
+        this.presentToast("Data inserted successfully");
+        this.employee = {
+          name:'',
+          exp:''
+        };;
+      });
+    }
   }
   presentToast(msg) {
     let toast = this.toastCtrl.create({
