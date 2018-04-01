@@ -9,7 +9,10 @@ import { ToastController } from 'ionic-angular';
 })
 export class HomePage {
   employees =[];
-  employee ={};
+  employee ={
+    name:'',
+    exp:''
+  };
   constructor(public navCtrl: NavController,private databasePro:DatabaseProvider,private toastCtrl:ToastController) {
       this.databasePro.getDatabaseSate().subscribe( ready => {
         if(ready){
@@ -28,7 +31,10 @@ export class HomePage {
     this.databasePro.addEmployee(this.employee['name'],this.employee['exp']).then(data=>{
       this.loadEmployees();
       this.presentToast("Data inserted successfully");
-      this.employee = {};
+      this.employee = {
+        name:'',
+        exp:''
+      };;
     });
   }
   presentToast(msg) {
